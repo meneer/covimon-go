@@ -2,17 +2,16 @@
 Covid-19 Monitoring solution
 
 
-Het concept
-
-Covid-19 Monitoring app
-
+## Het concept
 
 De dag na de persconferentie van Hugo de Jonge waarin opeens de Corona apps ter sprake kwamen, heb ik op Twitter een hele discussie gevoerd over een wild idee. En het leek me wel een goed om die discussie hier te laten zien. Ik heb de tweets ongecensureerd in dit artikel geplakt. Alleen een paar typefouten verwijderd. Voor de liefhebbers: ik ben op Twitter te vinden als @meneer
 = = =
+## de app
 Grappig van die apps van Hugo: we hebben het weer over privacy, de identiteit. Fout: we moeten uitgaan van toegang tot gegevens. Wanneer mag je erbij...?
 Laten we eens kijken naar een bestaande oplossing: Pokemon-Go, of Waze Het gaat niet om de deelnemer, maar om de gegevens. Die worden vastgelegd op een kaart doordat een bepaald vertrouwd proces de kaartgegevens mag wijzigen. Via een API. Een API om de gegevens te lezen, alleen de relevante gegevens natuurlijk. En een API om gegevens te registreren. Alleen de relevante gegevens. En alleen als je de API mag gebruiken. Is dit concept bruikbaar?
 Dus alleen een vertrouwde app mag de API benaderen. Dat is beveiligd immers. Ik roep maar even OAuth2 voor liefhebbers. Dus een API om te lezen, een API om te schrijven en een API voor de wetenschappers die statistische info willen gebruiken. Als ze dat mogen.
-En de vastgelegde gegevens?
+
+## En de vastgelegde gegevens?
 “Op deze geolocatie heeft het afgelopen uur iemand met de status 'besmet' rondgehangen.” En dat gegevens is geregistreerd door een app waarin iemand zijn eigen status beheert.
 Privacy? Nee, geen issue, want simpel een app downloaden. registreer zelf je Corona status. En tijdens je verplaatsing registreert de app automatisch locatie, tijd en status en leest ook automatisch van de locatie de nog relevante historische gegevens van die locatie. de API registreert geen andere gegevens dan de status op een bepaald moment.
 Inloggen? Nee, waarom, we willen toch niet een identiteit kennen? Totaal niet relevant. Device ID? Nee, totaal niet relevant. De API hoeft maar een paar gegevens te beheren. Net als Pokemon Go. Dan kun je het nog leuk visualiseren ook.
@@ -26,7 +25,7 @@ En een digitale identiteit zoals DigiD, iDIN, of Facebook? Lachen, nee hebben we
 En zullen we het dan Covimon-Go noemen? En als iemand er een (r) of (c) of TM of zo bij zet: afblijven dit hele concept is nu al Public Domain.
 En de naam bedacht voor Covimon: COVId-19 MONitor :D
 
-Deze vragen kwamen al voorbij van de Twitter community:
+## Deze vragen kwamen al voorbij van de Twitter community:
 V: En wie mag erbij. Ook degene die al veel gegevens heeft en zo het profiel kan aanvullen?
 A: De autorisatieprofielen worden op de autorisatieserver beheerd. En er zijn maar drie profielen: lezen locatie-info, schrijven locatie-info (beide voor de app) en lezen kaartinfo voor wetenschap. Maar daar zitten helemaal geen persoonsgegevens in.
 V: Voor elke stap in het proces moet de AVG gevolgd worden. Niet alleen de output. Maar wat bedoel je met herdefiniëren?
