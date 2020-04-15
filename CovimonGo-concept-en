@@ -1,0 +1,39 @@
+# covimon-go
+Covid-19 Monitoring solution
+
+## The concept
+
+The day after the Dutch Minister's press Covid-19 conference that suddenly brought up the Corona apps, I had a whole discussion on Twitter about a wild idea. And I thought it would be good to show that discussion here. I pasted the tweets uncensored into this article. Only a few typos removed. For the enthusiasts: I can be found on Twitter as @meneer
+= = =
+## the app
+Funny, or sad aspect of those apps from Hugo: we are talking about privacy, identity. Mistake: We must assume access to data. When can you join ...?
+Let's look at an existing solution: Pokemon-Go, or Waze It's not about the participant, it's about the data. These are recorded on a map because a certain trusted process is allowed to change the map data. Via an API. An API to read the data, only the relevant data of course. And an API to record data. Only the relevant data. And only if you are allowed to use the API. Is this concept useful?
+So only a trusted app can access the API. After all, that is secured. I just call OAuth2 for enthusiasts. So an API to read, an API to write and an API for the scientists who want to use statistical information. If they can.
+
+## And the recorded data?
+"Someone with 'infected' status hung out at this geolocation for the past hour." And that data is registered by an app in which someone manages their own status.
+Privacy? No, not an issue, because simply download an app. register your Corona status yourself. And during your move, the app automatically registers location, time and status and also automatically reads from the location the still relevant historical data of that location. the API does not record any data other than its status at any given time.
+Login? No, why don't we want to know an identity? Not relevant at all. Device ID? No, not relevant at all. The API only needs to manage a few data. Just like Pokemon Go. Then you can also visualize it fun.
+So, problem of Hugo de Jonge solved and the problems of all those privacy colleagues at the same time.
+What do we need?
+• A geo database. Damn, we must have it somewhere else, otherwise we'll copy Pokemon-Go.
+• An authorization server (for enthusiasts: an OAuth server)
+•	An app. Just one.
+
+And a digital identity such as DigiD (NL-government supplied citizen ID), iDIN (Dutch BankID), or Facebook? Naahhh, no we don't need it. An attribute cache like Irma (Dutch attribute store app)? We don't need more laughter either.
+And shall we call it Covimon-Go? And if someone adds an (r) or (c) or TM or so: don't touch this whole concept is already Public Domain.
+And the name came up for Covimon: COVId-19 MONitor: D
+
+## These questions came up from the Twitter community:
+Q: And who can join. Also the person who already has a lot of information and can thus complete the profile? \
+A: The authorization profiles are managed on the authorization server. And there are only three profiles: read location info, write location info (both for the app), and read map info for science. But there are no personal details at all. \
+Q: The GDPR must be followed for every step in the process. Not just the output. But what do you mean by redefining?
+A: What do we want to solve? The fundamental problem. So we don't have to guarantee privacy. That is only a precondition. What problem do we want to solve. For me: how can I know that I may have been in contact with an infected person. 'I', 'where' and 'when' are the data that are relevant. If 'I' equals 'my mobile' then we only have to arrange 'where' and 'when'. See my thread for a solution. \
+Q: The duration and possible distance of the contact are also important, as was apparent in the research / experiment of @FryRsquared at the time. But you already come reasonably far for these interactions with Count and you do not have to save the time and location.
+A: The other way around: in the geo database there are contact moments for the location concerned, we don't register anything anywhere. \
+Q: Now we still need to know who is the carrier of the virus. We have no idea about that because there is little testing. And then false positives. At the traffic light where you were waiting as a cyclist, a positive motorist stops next to you, eg \
+A: Right. Hence the holder of the mobile must manage symptoms and the like in the app. one adjust. Statuses: Infected, Suspicious, Blank, Recovered. Plenty of options. \
+Q: At least that sounds like pseudonym id plus timestamp plus location plus contamination status. I would certainly consider that as personal data. \
+A: That is why it is also undesirable. You cannot lose what you do not register.
+Q: What should be left of it? Pseudonym id and time stamp? \
+A: Pseudonym. Maybe time stamp can even be removed, the authorization server can add that to the to
