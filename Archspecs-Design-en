@@ -1,0 +1,60 @@
+# Covimon-Go
+Architecture and Functional Design
+The Covimon-Go system consists of the following components:
+
+- A mobile app for end users
+- An Authorization server
+- An Application Server with Geo database
+- A science module
+
+# Use cases:
+## Installation of the app
+The app can be downloaded from the regular app stores for Apple and Android (incl. F-droid).
+The user downloads the app and installs the app as usual for the relevant platform. Installation does not require a login, the identity is not necessary.
+
+## Registration personal Covid status
+After starting the app, the user is obliged to update their own Covid status. Without its own Covid status, the app cannot access the other functions.
+Covid status can be determined by checking various checkboxes for different questions. The questions are similar to those of the OLVG-Corona app.
+
+Based on the check marks, the app determines the Covid status, namely No phenomena, Suspicious, Possibly Infected. The Infected (100%) and Recovered (0%) status cannot be entered by the user. The user can record the Infected status (100%) and the Clean status (0%) by scanning the QR code of the test result with the app.
+The status is converted by the app into a number code: 10, 25, 75.
+The app will present the questionnaire to the user on a daily basis.
+
+If a user has been in a location where an infected person has previously been present, which could result in someone being infected, the Covid status in the app will be adjusted in accordance with the above schedule.
+
+## Move - read covid status location
+** Starting position: ** a user has registered their own Covid status in the app.
+
+If someone moves themselves, the app will use the geographic coordinates determined by the sensor of the mobile device to retrieve the Covid status of that location from that particular location from the central geographic database. In addition, all records of that location from the past 24 hours are retrieved. The value of each retrieved covid status is then transposed using the following method:
+- Value registered more than 12 hours ago: status = status \ * 10%
+- Value registered more than 4 hours ago: status = status \ * 25%
+- Value registered more than 1 hour ago: status = status \ * 50%
+- Value registered more than half an hour ago: status = status \ * 90%
+- Value registered less than half an hour ago: status = status - this status implies that someone with a COVID status has been in the same location less than half an hour ago or may even be there. This means that a real risk of contamination can be assumed.
+If chances are very high, the app will increase the covid status of the user in the app itself, according to the scheme above.
+This determination is performed for each retrieved record. The highest value is presented to the user by a color code. A score of 100% will be reported to the user via a notification.
+To be defined:
+- How long does a user have to be at a location to retrieve the data. Moving by car or bicycle may involve too short an exposure factor.
+- Color codes.
+- Granularity location
+
+## Move - registration covid status on location
+** Starting position: ** a user has registered their own Covid status in the app.
+If a user has a covid status of> 25%, the app will register the status in the geographic database. The app will record the status in the database at the coordinates as determined by the smartphone's geo-sensor. The time will also be recorded.
+The status of 0%, Clean as well as the status 100% cannot be captured at the moment. That status can only be determined if someone has been tested negative or positive. If that value can be entered without a test, then someone could use the app to incorrectly register locations as risky.
+Infected status and Recovered status can only be entered by a BIG registered employee. See the relevant use case.
+
+The app only registers:
+- Time of day
+- Covid status (10 - 75%)
+
+To be defined:
+- How long does a user have to be at a location to retrieve the data. Moving by car or bicycle may involve too short an exposure factor.
+
+## BIG registration covid status in the app
+The authorization server is responsible for verifying the BIG status.
+Registration by a BIG registered employee takes place as follows:
+The employee looks up the client's Covid status in their own environment. The app shows a QR code. The user scans the QR code in which the 100% Infected or 100% Recovered status is stated. After this, the Covid status will be updated in the app.
+
+## Science module
+The science module is available for scientific ommderzo
