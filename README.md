@@ -9,7 +9,7 @@ Covimon-Go: How can I know that I may have been in contact with an infected pers
 
 The entire twitter thread and the architecture are processed separately.
 
-## Nederlandslatige versie
+## Nederlandstalige versie
 De dag na de persconferentie van Hugo de Jonge waarin opeens de Corona apps ter sprake kwamen, heb ik op Twitter een hele discussie gevoerd over een wild idee.
 
 Wat willen we oplossen? Het fundamentele probleem. Dus niet we moeten privacy borgen. Dat is alleen maar een randvoorwaarde. Welk probleem willen we oplossen.
